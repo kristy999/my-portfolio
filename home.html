@@ -9,6 +9,44 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <style>
+      /* 👋 Wave Animation */
+      .wave {
+        display: inline-block;
+        animation: waveAnim 2s infinite;
+        transform-origin: 70% 70%;
+      }
+
+      @keyframes waveAnim {
+        0% { transform: rotate(0deg); }
+        10% { transform: rotate(14deg); }
+        20% { transform: rotate(-8deg); }
+        30% { transform: rotate(14deg); }
+        40% { transform: rotate(-4deg); }
+        50% { transform: rotate(10deg); }
+        60% { transform: rotate(0deg); }
+        100% { transform: rotate(0deg); }
+      }
+
+      /* ⌨️ Typing Effect */
+      .typing {
+        display: inline-block;
+        border-right: 3px solid;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 4s steps(30, end) infinite alternate,
+                   blink .7s step-end infinite;
+      }
+
+      @keyframes typing {
+        from { width: 0; }
+        to { width:85%; }
+      }
+
+      @keyframes blink {
+        50% { border-color: transparent; }
+      }
+    </style>
   </head>
   <body class="bg-body text-body">
     <div class="container text-center py-0">
@@ -30,8 +68,8 @@
 
         <!-- Text Column -->
         <div class="col-6">
-          <h1>Hello, I’m Krishan</h1>
-          <p>Welcome to my portfolio website.</p>
+          <h1>Hello <span class="wave">👋</span>, I’m Krishan</h1>
+          <h2 class="typing">Welcome to my portfolio website.</h2>
         </div>
       </div>
     </div>
