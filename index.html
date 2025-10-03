@@ -77,10 +77,10 @@
 
       /* 🔹 Make text responsive */
       .intro-text {
-        font-size: 2rem; /* default */
+        font-size: 6rem; /* default */
       }
       .intro-subtext {
-        font-size: 1.2rem; /* default */
+        font-size: 2rem; /* default */
       }
 
       .image-container {
@@ -125,8 +125,21 @@
         font-size: 2rem;
       }
 
+      .theme-toggle-btn {
+        position: fixed;
+        top: 1px; /* distance from top */
+        right: 1px; /* distance from right */
+        z-index: 1000; /* stays above other elements */
+      }
+
       /* Tablets (portrait & smaller laptops) */
       @media (max-width: 1199px) {
+        .intro-text {
+          font-size: 4rem;
+        }
+        .intro-subtext {
+          font-size: 1.8rem;
+        }
         .hero-img {
           margin-bottom: -40px;
         }
@@ -148,7 +161,7 @@
       @media (max-width: 768px) {
         /* Tablets and small screens */
         .intro-text {
-          font-size: 1.5rem;
+          font-size: 2rem;
         }
         .intro-subtext {
           font-size: 0.9rem;
@@ -201,11 +214,10 @@
     </style>
   </head>
   <body class="bg-body text-body">
-    <div class="container text-center py-0">
-      <button id="themeToggle" class="btn btn-primary">Switch Mode</button>
-      <h1>My Portfolio</h1>
-      <p>This site supports dark & light mode!</p>
-    </div>
+    <!-- Theme Toggle Button -->
+    <button id="themeToggle" class="btn btn-primary theme-toggle-btn">
+      <i id="themeIcon" class="bi bi-moon-fill"></i>
+    </button>
 
     <div class="container">
       <!-- Hero Row -->
@@ -300,11 +312,21 @@
       // 🌗 Dark/Light Mode Toggle
       const htmlElement = document.documentElement;
       const toggleBtn = document.getElementById("themeToggle");
+      const themeIcon = document.getElementById("themeIcon");
 
       toggleBtn.addEventListener("click", () => {
         let currentTheme = htmlElement.getAttribute("data-bs-theme");
         let newTheme = currentTheme === "light" ? "dark" : "light";
         htmlElement.setAttribute("data-bs-theme", newTheme);
+
+        // Toggle icon
+        if (newTheme === "dark") {
+          themeIcon.classList.remove("bi-moon-fill");
+          themeIcon.classList.add("bi-sun-fill");
+        } else {
+          themeIcon.classList.remove("bi-sun-fill");
+          themeIcon.classList.add("bi-moon-fill");
+        }
       });
 
       // ⌨️ Typewriter Effect for Multiple Phrases
