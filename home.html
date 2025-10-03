@@ -28,23 +28,28 @@
         100% { transform: rotate(0deg); }
       }
 
-      /* ⌨️ Typing Effect */
+      /* ⌨️ Typing Effect (JS controlled) */
       .typing {
         display: inline-block;
         border-right: 3px solid;
         white-space: nowrap;
         overflow: hidden;
-        animation: typing 4s steps(30, end) infinite alternate,
-                   blink .7s step-end infinite;
-      }
-
-      @keyframes typing {
-        from { width: 0; }
-        to { width:85%; }
+        min-height: 1.5em; /* Prevents height jump */
       }
 
       @keyframes blink {
         50% { border-color: transparent; }
+      }
+
+      .typing::after {
+        content: "";
+        display: inline-block;
+        width: 3px;
+        height: 1em;
+        background: currentColor;
+        margin-left: 2px;
+        animation: blink .7s infinite;
+        vertical-align: bottom;
       }
     </style>
   </head>
@@ -69,7 +74,7 @@
         <!-- Text Column -->
         <div class="col-6">
           <h1>Hello <span class="wave">👋</span>, I’m Krishan</h1>
-          <h2 class="typing">Welcome to my portfolio website.</h2>
+          <h2 class="typing" id="typewriter"></h2>
         </div>
       </div>
     </div>
@@ -78,6 +83,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+      // 🌗 Dark/Light Mode Toggle
       const htmlElement = document.documentElement;
       const toggleBtn = document.getElementById("themeToggle");
 
@@ -86,6 +92,43 @@
         let newTheme = currentTheme === "light" ? "dark" : "light";
         htmlElement.setAttribute("data-bs-theme", newTheme);
       });
+
+      // ⌨️ Typewriter Effect for Multiple Phrases
+      const phrases = [
+        "Welcome to my portfolio website.",
+        "I love coding.",
+        "Let’s build something amazing!"
+      ];
+
+      let currentPhrase = 0;
+      let currentChar = 0;
+      let isDeleting = false;
+      const speed = 100; // typing speed
+      const delayBetween = 1500; // delay before erasing
+      const typewriter = document.getElementById("typewriter");
+
+      function typeEffect() {
+        let phrase = phrases[currentPhrase];
+        if (!isDeleting) {
+          typewriter.textContent = phrase.substring(0, currentChar + 1);
+          currentChar++;
+          if (currentChar === phrase.length) {
+            isDeleting = true;
+            setTimeout(typeEffect, delayBetween);
+            return;
+          }
+        } else {
+          typewriter.textContent = phrase.substring(0, currentChar - 1);
+          currentChar--;
+          if (currentChar === 0) {
+            isDeleting = false;
+            currentPhrase = (currentPhrase + 1) % phrases.length;
+          }
+        }
+        setTimeout(typeEffect, isDeleting ? speed / 2 : speed);
+      }
+
+      typeEffect();
     </script>
   </body>
 </html>
