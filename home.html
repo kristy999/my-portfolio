@@ -47,7 +47,7 @@
       /* ⌨️ Typing Effect (JS controlled) */
       .typing {
         display: inline-block;
-        border-right: 3px solid;
+        /* border-right: 3px solid; */
         white-space: nowrap;
         overflow: hidden;
         min-height: 1.5em; /* Prevents height jump */
@@ -69,43 +69,45 @@
         animation: blink 0.7s infinite;
         vertical-align: bottom;
       }
-    </style>
-  </head>
-  <body class="bg-body text-body">
-    <div class="container text-center py-0">
-      <button id="themeToggle" class="btn btn-primary">Switch Mode</button>
-      <h1>My Portfolio</h1>
-      <p>This site supports dark & light mode!</p>
-    </div>
 
-    <div class="container">
-      <div class="row align-items-center">
-        <!-- Image Column -->
-        <div class="col-6 text-center">
-          <img
-            src="images/krishan_main_image.png"
-            alt="Profile Image"
-            class="img-fluid rounded-circle"
-          />
-        </div>
-
-        <!-- Text Column -->
-        <div class="col-6 text-start">
-          <h1 class="intro-text">
-            Hello <span class="wave">👋</span>, I’m Krishan
-          </h1>
-          <h2 class="typing intro-subtext" id="typewriter"></h2>
-        </div>
-      </div>
-    </div>
-
-    <style>
       /* 🔹 Make text responsive */
       .intro-text {
         font-size: 2rem; /* default */
       }
       .intro-subtext {
         font-size: 1.2rem; /* default */
+      }
+
+      /* Accent Lines */
+      .line-grey {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 40px;
+        border: none;
+        height: 23px;
+        background-color: rgba(128, 128, 128, 0.563);
+        width: 100%; /* shorter than full width */
+        margin-bottom: 0;
+        z-index: 1;
+      }
+
+      .line-black {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 1px;
+        border: none;
+        height: 39px;
+        background-color: rgb(0, 0, 0);
+        width: 100%; /* shorter line */
+        /* margin: auto;/ */
+        z-index: 1;
+      }
+
+      .rounded-circle {
+        position: relative;
+        z-index: 2;
       }
 
       @media (max-width: 768px) {
@@ -121,13 +123,47 @@
       @media (max-width: 480px) {
         /* Very small phones */
         .intro-text {
-          font-size: 1.0rem;
+          font-size: 1rem;
         }
         .intro-subtext {
           font-size: 0.6rem;
         }
       }
     </style>
+  </head>
+  <body class="bg-body text-body">
+    <div class="container text-center py-0">
+      <button id="themeToggle" class="btn btn-primary">Switch Mode</button>
+      <h1>My Portfolio</h1>
+      <p>This site supports dark & light mode!</p>
+    </div>
+
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Image Column -->
+        <div class="col-6 text-center position-relative">
+          <img
+            src="images/krishan_main_image.png"
+            alt="Profile Image"
+            class="img-fluid rounded-circle"
+          />
+
+          <!-- Grey Line -->
+          <div class="line-grey"></div>
+
+          <!-- Black Line -->
+          <div class="line-black"></div>
+        </div>
+
+        <!-- Text Column -->
+        <div class="col-6 text-start d-flex flex-column justify-content-center">
+          <h1 class="intro-text">
+            Hello <span class="wave">👋</span>, I’m Krishan
+          </h1>
+          <h2 class="typing intro-subtext" id="typewriter"></h2>
+        </div>
+      </div>
+    </div>
 
     <!-- Bootstrap Bundle JS (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
