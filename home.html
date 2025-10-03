@@ -95,17 +95,18 @@
         width: 100%;
         position: relative;
         z-index: 1;
+        bottom: 37px;
       }
 
       /* Accent Lines */
       .line-grey {
-        height: 30px;
+        height: 27px;
         background-color: grey;
         width: 100%;
       }
 
       .line-black {
-        height: 25px;
+        height: 40px;
         background-color: black;
         width: 100%;
       }
@@ -113,6 +114,22 @@
       .rounded-circle {
         position: relative;
         z-index: 2;
+      }
+
+      /* Tablets (portrait & smaller laptops) */
+      @media (max-width: 1199px) {
+        .hero-img {
+          margin-bottom: -40px;
+        }
+        .line-row {
+          bottom: 30px;
+        }
+        .line-grey {
+          height: 22px;
+        }
+        .line-black {
+          height: 32px;
+        }
       }
 
       @media (max-width: 768px) {
@@ -123,6 +140,19 @@
         .intro-subtext {
           font-size: 0.9rem;
         }
+
+        .hero-img {
+          margin-bottom: -30px;
+        }
+        .line-row {
+          bottom: 20px;
+        }
+        .line-grey {
+          height: 18px;
+        }
+        .line-black {
+          height: 25px;
+        }
       }
 
       @media (max-width: 480px) {
@@ -132,6 +162,19 @@
         }
         .intro-subtext {
           font-size: 0.6rem;
+        }
+
+        .hero-img {
+          margin-bottom: -20px;
+        }
+        .line-row {
+          bottom: 15px;
+        }
+        .line-grey {
+          height: 15px;
+        }
+        .line-black {
+          height: 20px;
         }
       }
     </style>
