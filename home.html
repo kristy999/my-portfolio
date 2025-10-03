@@ -18,14 +18,30 @@
       }
 
       @keyframes waveAnim {
-        0% { transform: rotate(0deg); }
-        10% { transform: rotate(14deg); }
-        20% { transform: rotate(-8deg); }
-        30% { transform: rotate(14deg); }
-        40% { transform: rotate(-4deg); }
-        50% { transform: rotate(10deg); }
-        60% { transform: rotate(0deg); }
-        100% { transform: rotate(0deg); }
+        0% {
+          transform: rotate(0deg);
+        }
+        10% {
+          transform: rotate(14deg);
+        }
+        20% {
+          transform: rotate(-8deg);
+        }
+        30% {
+          transform: rotate(14deg);
+        }
+        40% {
+          transform: rotate(-4deg);
+        }
+        50% {
+          transform: rotate(10deg);
+        }
+        60% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
       }
 
       /* ⌨️ Typing Effect (JS controlled) */
@@ -38,7 +54,9 @@
       }
 
       @keyframes blink {
-        50% { border-color: transparent; }
+        50% {
+          border-color: transparent;
+        }
       }
 
       .typing::after {
@@ -48,7 +66,7 @@
         height: 1em;
         background: currentColor;
         margin-left: 2px;
-        animation: blink .7s infinite;
+        animation: blink 0.7s infinite;
         vertical-align: bottom;
       }
     </style>
@@ -67,17 +85,49 @@
           <img
             src="images/krishan_main_image.png"
             alt="Profile Image"
-            class="img-fluid"
+            class="img-fluid rounded-circle"
           />
         </div>
 
         <!-- Text Column -->
-        <div class="col-6">
-          <h1>Hello <span class="wave">👋</span>, I’m Krishan</h1>
-          <h2 class="typing" id="typewriter"></h2>
+        <div class="col-6 text-start">
+          <h1 class="intro-text">
+            Hello <span class="wave">👋</span>, I’m Krishan
+          </h1>
+          <h2 class="typing intro-subtext" id="typewriter"></h2>
         </div>
       </div>
     </div>
+
+    <style>
+      /* 🔹 Make text responsive */
+      .intro-text {
+        font-size: 2rem; /* default */
+      }
+      .intro-subtext {
+        font-size: 1.2rem; /* default */
+      }
+
+      @media (max-width: 768px) {
+        /* Tablets and small screens */
+        .intro-text {
+          font-size: 1.5rem;
+        }
+        .intro-subtext {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* Very small phones */
+        .intro-text {
+          font-size: 1.0rem;
+        }
+        .intro-subtext {
+          font-size: 0.6rem;
+        }
+      }
+    </style>
 
     <!-- Bootstrap Bundle JS (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -97,7 +147,7 @@
       const phrases = [
         "Welcome to my portfolio website.",
         "I love coding.",
-        "Let’s build something amazing!"
+        "Let’s build something amazing!",
       ];
 
       let currentPhrase = 0;
