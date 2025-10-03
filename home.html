@@ -78,31 +78,36 @@
         font-size: 1.2rem; /* default */
       }
 
-      /* Accent Lines */
-      .line-grey {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 40px;
-        border: none;
-        height: 23px;
-        background-color: rgba(128, 128, 128, 0.563);
-        width: 100%; /* shorter than full width */
-        margin-bottom: 0;
+      .image-container {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+      }
+
+      .hero-img {
+        position: relative;
+        z-index: 2;
+        margin-bottom: -50px; /* pull shoe onto bars */
+      }
+
+      /* Line Row (full width) */
+      .line-row {
+        width: 100%;
+        position: relative;
         z-index: 1;
       }
 
+      /* Accent Lines */
+      .line-grey {
+        height: 30px;
+        background-color: grey;
+        width: 100%;
+      }
+
       .line-black {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 1px;
-        border: none;
-        height: 39px;
-        background-color: rgb(0, 0, 0);
-        width: 100%; /* shorter line */
-        /* margin: auto;/ */
-        z-index: 1;
+        height: 25px;
+        background-color: black;
+        width: 100%;
       }
 
       .rounded-circle {
@@ -139,20 +144,15 @@
     </div>
 
     <div class="container">
+      <!-- Hero Row -->
       <div class="row align-items-center">
         <!-- Image Column -->
-        <div class="col-6 text-center position-relative">
+        <div class="col-6 text-center">
           <img
             src="images/krishan_main_image.png"
             alt="Profile Image"
-            class="img-fluid rounded-circle"
+            class="img-fluid rounded-circle hero-img"
           />
-
-          <!-- Grey Line -->
-          <div class="line-grey"></div>
-
-          <!-- Black Line -->
-          <div class="line-black"></div>
         </div>
 
         <!-- Text Column -->
@@ -163,6 +163,12 @@
           <h2 class="typing intro-subtext" id="typewriter"></h2>
         </div>
       </div>
+    </div>
+
+    <!-- Full-Width Bars Row -->
+    <div class="line-row">
+      <div class="line-grey"></div>
+      <div class="line-black"></div>
     </div>
 
     <!-- Bootstrap Bundle JS (CDN) -->
